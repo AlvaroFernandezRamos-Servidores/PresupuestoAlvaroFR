@@ -1,0 +1,133 @@
+html{
+    font-family:Helvetica;
+    color:#F05D23;
+}
+
+input[type="submit"]{
+    color:#F05D23;
+    width: 90%;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background-color:#261C15;
+    background-image: url(../img/fondoCutre.png);
+    background-repeat:no-repeat;
+    background-position:bottom;
+    background-size:contain;
+    min-height:100vh;
+    overflow:hidden;
+}
+
+section{
+    text-align: center;
+    background-color:#E4E6C3;
+    padding: 35px 0 5px;
+    margin: 20px 0;
+}
+
+section h1{
+    font-weight:bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 0;
+    z-index: 1000;
+    position: absolute;
+    top: 31px;
+    left: 40px;
+}
+
+form input,
+form label{
+    display:inline-block;
+    vertical-align:middle;
+}
+
+form fieldset{
+    border:0;
+    height: auto;
+    margin:0;
+    padding: 20px 0 30px;
+}
+
+form fieldset:after{
+    content:'';
+    display:none;
+    vertical-align: middle;
+    height:100%;
+    width:1px;
+}
+
+form input[type="checkbox"]{
+    display:none;
+}
+
+form input[type="checkbox"]+label,
+form input[type="submit"]{
+    padding:10px;
+    border-radius:25px;
+    cursor:pointer;
+    margin:0;
+    border: 0;
+    border: 1px solid #000000a1;
+    background-color:#261C15;
+}
+
+form input[type="submit"]{
+    width:100%;
+    border-radius:0;
+    text-transform: uppercase;
+}
+
+form input[type="checkbox"]+label{
+    position:relative;
+}
+
+form input[type="checkbox"]+label:before{
+    content:'';
+    display:inline-block;
+    width:30px;
+    height:30px;
+    background-color:#b33434;
+    border-radius:50%;
+    position:absolute;
+    left: -35px;
+    top: 5px;
+    border: 1px solid #000000a1;
+    box-sizing: border-box;
+}
+
+form input[type="checkbox"]:checked+label:before{
+    background-color:#9bcc3b;
+}
+
+form input[type="checkbox"]+label:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.shapes div{
+    background-color:#C5D86D;
+    position:absolute;
+}
+
+.shapes .shape1{
+    left: 20px;
+    top:0;
+    width:75px;
+    height:100vh;
+}
+
+.shapes .shape2{
+    left:0;
+    top: 30px;
+    width:100vw;
+    height:30px;
+}
+
+.shapes .shape3{
+    right:50px;
+    top:0;
+    width:40px;
+    height:100vh;
+}
