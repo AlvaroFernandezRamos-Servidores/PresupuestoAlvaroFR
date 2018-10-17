@@ -20,6 +20,32 @@ body{
     overflow:hidden;
 }
 
+body:after{
+    content:'';
+    display:block;
+    position:absolute;
+    width:129px;
+    height:137px;
+    background:url(../img/perritoPerito.png);
+    top:15%;
+    right:5%;
+    z-index: 999;
+    background-size: contain;
+    animation: perritoPerito 2s infinite;
+}
+
+@keyframes perritoPerito {
+    0%   {transform:rotate(0);}
+    24%   {transform:rotate(0);}
+    25%   {transform:rotate(45deg);}
+    49%   {transform:rotate(45deg);}
+    50%   {transform:rotate(0);}
+    74%   {transform:rotate(0);}
+    75%  {transform:rotate(-45deg);}
+    100%  {transform:rotate(-45deg);}
+}
+
+
 section{
     text-align: center;
     background-color:#E4E6C3;

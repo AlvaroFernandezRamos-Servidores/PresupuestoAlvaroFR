@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author atomsk
  */
-@WebServlet(name = "Eleccion", urlPatterns = {"/Eleccion"})
-public class Eleccion extends HttpServlet {
+@WebServlet(name = "Edificio", urlPatterns = {"/Edificio"})
+public class Edificio extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +32,6 @@ public class Eleccion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-	
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,28 +60,23 @@ public class Eleccion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-	processRequest(request, response);
-	String path= request.getContextPath();
-	boolean edif = false;
-	boolean cont = false;
-	if(request.getParameter("edif") !=null){
-	    edif = true;
-	}
-	if(request.getParameter("cont") !=null){
-	    cont = true;
-	}
-
-	if(!edif && !cont){
-	    response.sendRedirect(path +"/index.html");
-	}else{
-	    EleccionModel elec = new EleccionModel();
-	    elec.setPath(request.getContextPath());
-	    HttpSession sesion = request.getSession();
-	    sesion.setAttribute("eleccion",elec);
-	    elec.setEdificio(edif?true:false);
-	    elec.setContenido(cont?true:false);
-	    response.sendRedirect(elec.redirectMe());
-	}
+	//processRequest(request, response);
+	//Instanciamos un objeto de la clase EdificioModel
+	EdificioModel edif = new EdificioModel();
+	//Seteamos sus atributos
+	edif.setTipoEdificio(request.getParameter("tipoEdif"));
+	edif.setNhab(Integer.parseInt(request.getParameter("nHab")));
+	edif.setFechaCons(Integer.parseInt(request.getParameter("fechaCons")));
+	edif.setValorMercado(Integer.parseInt(request.getParameter("valorMerc")));
+	edif.setTipoCons(request.getParameter("tipoCons"));
+	//Recuperamos la sesión
+	HttpSession sesion = request.getSession();
+	//Guardamos el objeto en sesión
+	sesion.setAttribute("edificio",edif);
+	//Preguntamos al objeto EleccionModel que tenemos en sesión cual será la siguiente dirección
+	EleccionModel elec = (EleccionModel) sesion.getAttribute("eleccion");
+	//Y redirigimos hacia ella
+	response.sendRedirect(elec.redirectMe());
     }
 
     /**
