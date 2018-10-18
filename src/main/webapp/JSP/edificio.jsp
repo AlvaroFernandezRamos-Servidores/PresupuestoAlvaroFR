@@ -3,10 +3,14 @@
     Created on : Oct 15, 2018, 5:21:34 PM
     Author     : atomsk
 --%>
-
-<%@page import="es.albarregas.presupuestoalvarofr.EleccionModel"%>
-<%@page import="es.albarregas.presupuestoalvarofr.Eleccion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String path = request.getContextPath();
+    HttpSession sesion = request.getSession();
+    if(sesion.getAttribute("eleccion")==null){
+	response.sendRedirect(path + "/index.html");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>

@@ -12,14 +12,18 @@
     HttpSession sesion = request.getSession();
     double resultadoEdificio = 0;
     String resultadoEdifShow = "";
+    EdificioModel edif = null;
+    ContenidoModel cont = null;
     if(sesion.getAttribute("edificio") != null){//Math.round(a * 100.0) / 100.0;
 	resultadoEdificio = Math.round(CalcularCuota.calcularEdificio((EdificioModel)sesion.getAttribute("edificio")) * 100.0) / 100.0;
+	edif = (EdificioModel)sesion.getAttribute("edificio");
 	resultadoEdifShow = "show";
     }
     double resultadoContenido = 0;
     String resultadoContShow = "";
     if(sesion.getAttribute("contenido") != null){
 	resultadoContenido = Math.round(CalcularCuota.calcularContenido((ContenidoModel)sesion.getAttribute("contenido")) * 100.0) / 100.0;
+	cont = (ContenidoModel)sesion.getAttribute("contenido");
 	resultadoContShow = "show";
     }
     double totalGrupal = 0;
@@ -44,24 +48,53 @@
     <body role="main">
 	<section>
 	    <h1>Visualización de resultados</h1>
+	    <%
+		if(resultadoEdifShow.length()>0){
+	    %>
 	    <article class="<%=resultadoEdifShow%>">
 		<h2>Cuota por Edificio</h2>
 		<div>
-		    <span>El resultado de su cuota para el edificio es: <%=resultadoEdificio%></span>
+		    <span>Cuota básica</span> : <span><%=edif.getValorMercado()%> €</span><br>
+		    <span>Tipo de edificio</span> : <span><%=edif.getTipoEdificio()%></span><br>
+		    <span>Fecha de construcción</span> : <span><%=edif.getFechaCons()%></span><br>
+		    <span>Tipo de Construcción</span> : <span><%=edif.getTipoCons()%></span><br>
+		    <span>El resultado de su cuota para el edificio es: <%=resultadoEdificio%> €</span>
 		</div>
 	    </article>
+	    <%
+		}
+	    %>
+	    
+	    <%
+		if(resultadoContShow.length()>0){
+	    %>
 	    <article class="<%=resultadoContShow%>">
 		<h2>Cuota por Contenido</h2>
 		<div>
-		    <span>El resultado de su cuota para el contenido es: <%=resultadoContenido%></span>
+		    <span>Seguro de accidentes</span> : <span><%=cont.isAccidentalDam()%></span><br>
+		    <span>Cantidad asegurada</span> : <span><%=cont.getCantidadAseg()%> €</span><br>
+		    <span>Franquicia</span> : <span><%=cont.getFrank()%></span><br>
+		    <span>El resultado de su cuota para el contenido es: <%=resultadoContenido%> €</span>
 		</div>
 	    </article>
+	    <%
+		}
+	    %>
+	    
+	    
+	    <%
+		if(resultadoEdifShow.length()>0 && resultadoContShow.length()>0){
+	    %>
 	    <article class="<%=totalGrupalShow%>">
 		<h2>Monto total</h2>
 		<div>
-		    <span>El resultado total es: <%=totalGrupal%></span>
+		    <span>El resultado total es: <%=totalGrupal%> €</span>
 		</div>
 	    </article>
+		
+	    <%
+		}
+	    %>
 	<a href="<%=path%>/index.html">Volver</a>
 	</section>
 	<div class="shapes">
