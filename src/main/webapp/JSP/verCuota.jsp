@@ -29,6 +29,8 @@
 	totalGrupalShow = "show";
     }
     
+    sesion.invalidate();
+    
     String path = request.getContextPath();
     
 %>

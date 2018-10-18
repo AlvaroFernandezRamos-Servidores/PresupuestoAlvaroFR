@@ -36,6 +36,7 @@ public class Contenido extends HttpServlet {
 	HttpSession sesion = request.getSession();
 	sesion.setAttribute("contenido",cont);
 	EleccionModel elec = (EleccionModel) sesion.getAttribute("eleccion");
+	elec.setContenido(false);
 	response.sendRedirect(elec.redirectMe());
     }
     

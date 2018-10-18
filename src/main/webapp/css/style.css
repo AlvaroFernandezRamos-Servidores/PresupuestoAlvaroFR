@@ -85,7 +85,8 @@ form fieldset:after{
     width:1px;
 }
 
-form input[type="checkbox"]{
+form input[type="checkbox"],
+form input[type="radio"]{
     display:none;
 }
 
@@ -106,11 +107,13 @@ form input[type="submit"]{
     text-transform: uppercase;
 }
 
-form input[type="checkbox"]+label{
+form input[type="checkbox"]+label,
+form input[type="radio"]+label{
     position:relative;
 }
 
-form input[type="checkbox"]+label:before{
+form input[type="checkbox"]+label:before,
+form input[type="radio"]+label:before{
     content:'';
     display:inline-block;
     width:30px;
@@ -122,14 +125,83 @@ form input[type="checkbox"]+label:before{
     top: 5px;
     border: 1px solid #000000a1;
     box-sizing: border-box;
+    cursor:pointer;
 }
 
-form input[type="checkbox"]:checked+label:before{
+form input[type="checkbox"]:checked+label:before,
+form input[type="radio"]:checked+label:before{
     background-color:#9bcc3b;
 }
 
-form input[type="checkbox"]+label:not(:last-child) {
+fieldset.subform input[type="checkbox"]+label:first-child,
+fieldset.subform input[type="radio"]+label:first-child{
     margin-bottom: 20px;
+}
+
+fieldset.subform input[type="checkbox"]+label:not(:first-child):not(:last-child){
+    margin-right:20px;
+}
+fieldset.subform input[type="radio"]+label:not(:first-child):not(:last-child){
+    margin-right:35px;
+}
+
+fieldset.subform input[type="checkbox"]+label:not(:first-child):not(:last-child):before,
+fieldset.subform input[type="radio"]+label[for="1000"]:before,
+fieldset.subform input[type="radio"]+label:not(:first-child):not(:last-child):before,
+fieldset.subform input[type="radio"]+label[for="hormigon"]:before{
+    margin-left:10px;
+}
+
+fieldset:not(.subform):not(.subform):not(.subform):not(.subform):not(:last-child) > label{
+    margin-bottom:20px;
+}
+
+fieldset > div{
+    display:inline-block;
+    width:55%;
+    text-align:left;
+}
+
+fieldset > div > label:first-child{
+    min-width:250px;
+}
+
+fieldset > div:not(:last-of-type){
+    margin-bottom:15px;
+}
+
+fieldset select{
+    background-color:#261C15;
+    padding:8px;
+    border-radius: 15px;
+    color:#F05D23;
+    outline: none;
+}
+
+.textcenter{
+    text-align:center;
+}
+
+fieldset.subform input[type="checkbox"]+label,
+fieldset.subform input[type="radio"]+label{
+    width:0;
+    height:0;
+    background-color: transparent;
+    border: 0;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+fieldset.subform input[type="checkbox"]+label:before,
+fieldset.subform input[type="radio"]+label:before{
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+}
+
+fieldset.subform input[type="radio"]+label:before{
+    top: -10px;
 }
 
 .shapes div{
@@ -156,4 +228,21 @@ form input[type="checkbox"]+label:not(:last-child) {
     top:0;
     width:40px;
     height:100vh;
+}
+
+article:not(.show){
+    display:none;
+}
+
+article.show{
+    margin:25px 0;
+}
+
+article+a{
+    display:block;
+    width:100%;
+    color:#F05D23;
+    background-color:#261C15;
+    padding:8px;
+    text-decoration: none;
 }

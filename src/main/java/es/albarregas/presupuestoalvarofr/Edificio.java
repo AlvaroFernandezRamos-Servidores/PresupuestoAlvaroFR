@@ -69,12 +69,15 @@ public class Edificio extends HttpServlet {
 	edif.setFechaCons(Integer.parseInt(request.getParameter("fechaCons")));
 	edif.setValorMercado(Integer.parseInt(request.getParameter("valorMerc")));
 	edif.setTipoCons(request.getParameter("tipoCons"));
+	
 	//Recuperamos la sesión
 	HttpSession sesion = request.getSession();
 	//Guardamos el objeto en sesión
 	sesion.setAttribute("edificio",edif);
 	//Preguntamos al objeto EleccionModel que tenemos en sesión cual será la siguiente dirección
 	EleccionModel elec = (EleccionModel) sesion.getAttribute("eleccion");
+	//seteamos el form actual a falso porque ya está completado
+	elec.setEdificio(false);
 	//Y redirigimos hacia ella
 	response.sendRedirect(elec.redirectMe());
     }
