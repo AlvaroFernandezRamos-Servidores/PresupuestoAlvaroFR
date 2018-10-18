@@ -10,15 +10,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession sesion = request.getSession();
+    //Inicializamos las variables que podríamos necesitar
     double resultadoEdificio = 0;
     String resultadoEdifShow = "";
     EdificioModel edif = null;
     ContenidoModel cont = null;
+    //Si recibimos un atributo edificio en sesión 
     if(sesion.getAttribute("edificio") != null){//Math.round(a * 100.0) / 100.0;
+	//Calculamos el resultado de esa parte
 	resultadoEdificio = Math.round(CalcularCuota.calcularEdificio((EdificioModel)sesion.getAttribute("edificio")) * 100.0) / 100.0;
-	edif = (EdificioModel)sesion.getAttribute("edificio");
-	resultadoEdifShow = "show";
+	edif = (EdificioModel)sesion.getAttribute("edificio");//asignamos el objeto edificio en sesión en la variable anterior
+	resultadoEdifShow = "show";//definimos un parametro para saber si hemos pasado por aqui
     }
+    //Hacemos lo mismo con contenido si viene en sesion
     double resultadoContenido = 0;
     String resultadoContShow = "";
     if(sesion.getAttribute("contenido") != null){
@@ -26,6 +30,7 @@
 	cont = (ContenidoModel)sesion.getAttribute("contenido");
 	resultadoContShow = "show";
     }
+    //Si vienen los dos nos preparamos para hacer un sumatorio de ambos
     double totalGrupal = 0;
     String totalGrupalShow = "";
     if(sesion.getAttribute("contenido") != null && sesion.getAttribute("edificio") != null){

@@ -8,6 +8,7 @@
 <%
     String path = request.getContextPath();
     HttpSession sesion = request.getSession();
+    //Si no existe el atributo eleccion en sesión es que se ha saltado un paso, así que lo mandamos al index
     if(sesion.getAttribute("eleccion")==null){
 	response.sendRedirect(path + "/index.html");
     }

@@ -28,16 +28,25 @@ public class Contenido extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-	//processRequest(request, response);
+	//Instanciamos un objeto ContenidoModel
 	ContenidoModel cont = new ContenidoModel();
+	//Y seteamos todos los parámetros
 	cont.setAccidentalDam((request.getParameter("accidentalDam")!=null)?true:false);
 	cont.setCantidadAseg(Integer.parseInt(request.getParameter("cantidadAseg")));
 	cont.setFrank(Integer.parseInt(request.getParameter("frank")));
+	//Recuperamos la sesión
 	HttpSession sesion = request.getSession();
+	//E introducimos el objeto en sesión
 	sesion.setAttribute("contenido",cont);
+	//Recuperamos el objeto Eleccion
 	EleccionModel elec = (EleccionModel) sesion.getAttribute("eleccion");
+	//Definimos este paso como completado
 	elec.setContenido(false);
+	//Y dejamos que Elección nos redirija
 	response.sendRedirect(elec.redirectMe());
+	/* Llegado a este punto, como no habría más pasos cabría esperar hacer la redirección y pasar los parametros por petición en lugar de
+	por sesión, pero por consistencia en la metodología, por la idea de estandarización y vistas a posible ampliabilidad, se ha conservado
+	por el metodo empleado en la siguiente, que facilmente podría incluir otro paso en el formulario.*/
     }
     
     @Override
