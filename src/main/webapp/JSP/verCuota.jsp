@@ -16,6 +16,7 @@
     EdificioModel edif = null;
     ContenidoModel cont = null;
     //Si recibimos un atributo edificio en sesión 
+    // EN EL MODELO VISTA CONTROLADOR LAS PÁGINAS JSP NO SE ENCARGAN DE LA LÓGICA DE NEGOCIO
     if(sesion.getAttribute("edificio") != null){//Math.round(a * 100.0) / 100.0;
 	//Calculamos el resultado de esa parte
 	resultadoEdificio = Math.round(CalcularCuota.calcularEdificio((EdificioModel)sesion.getAttribute("edificio")) * 100.0) / 100.0;

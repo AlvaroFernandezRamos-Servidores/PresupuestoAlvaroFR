@@ -9,9 +9,11 @@ package es.albarregas.presupuestoalvarofr;
  *
  * @author atomsk
  */
+// ESTE FICHERO ES UN BEAN Y NECESITA IMPLEMENTAR Serializable
 public class EleccionModel {
     boolean edificio;
     boolean contenido;
+    // NO ES UN ATRIBUTO DE ESTE BEAN
     String path="";
 
     public String getPath() {

@@ -9,10 +9,14 @@ package es.albarregas.presupuestoalvarofr;
  *
  * @author atomsk
  */
+// ESTE FICHERO ES UN BEAN Y NECESITA IMPLEMENTAR Serializable
 public class ContenidoModel {
     boolean accidentalDam;
+    // ESTE ATRIBUTO SERÍA DOUBLE
     int cantidadAseg;
+    // UTILIZA NOMBRES DE VARIABLE QUE RECUERDEN A SU CONTENIDO
     int frank;
+    // FALTA EL ATRIBUTO prima DEL TIPO DOUBLE
 
     public boolean isAccidentalDam() {
 	return accidentalDam;

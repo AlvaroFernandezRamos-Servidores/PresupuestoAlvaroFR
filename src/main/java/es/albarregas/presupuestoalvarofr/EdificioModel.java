@@ -9,12 +9,15 @@ package es.albarregas.presupuestoalvarofr;
  *
  * @author atomsk
  */
+// ESTE FICHERO ES UN BEAN Y NECESITA IMPLEMENTAR Serializable
 public class EdificioModel {
     String tipoEdificio;
     int nhab;
     int fechaCons;
     String tipoCons;
+    // ESTE ATRIBUTO SERÍA DOUBLE
     int valorMercado;
+    // FALTA EL ATRIBUTO prima DEL TIPO DOUBLE
 
     public String getTipoEdificio() {
 	return tipoEdificio;

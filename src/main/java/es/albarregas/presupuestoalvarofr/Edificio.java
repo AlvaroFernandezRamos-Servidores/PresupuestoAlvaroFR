@@ -77,6 +77,7 @@ public class Edificio extends HttpServlet {
 	//Preguntamos al objeto EleccionModel que tenemos en sesión cual será la siguiente dirección
 	EleccionModel elec = (EleccionModel) sesion.getAttribute("eleccion");
 	//seteamos el form actual a falso porque ya está completado
+        // NO LO PUEDES HACER YA QUE EN LA SALIDA NECESITAS SABER LO QUE ESTABA
 	elec.setEdificio(false);
 	//Y redirigimos hacia ella
 	response.sendRedirect(elec.redirectMe());

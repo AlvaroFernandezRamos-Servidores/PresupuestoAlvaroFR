@@ -73,6 +73,7 @@ public class Eleccion extends HttpServlet {
 	}
 
 	if(!edif && !cont){
+            // EN LOS CONTROLADORES SE UTILIZA request.getRequestDisp.. PARA IR A PÁGINAS JSP
 	    response.sendRedirect(path +"/index.html");
 	}else{
 	    EleccionModel elec = new EleccionModel();
@@ -80,6 +81,7 @@ public class Eleccion extends HttpServlet {
 	    HttpSession sesion = request.getSession();
 	    sesion.setAttribute("eleccion",elec);
 	    elec.setEdificio(edif?true:false);
+            // YO PONDRÍA elec.setEdificio(edif); Y DE HECHO ES LO QUE HAY QUE PONER
 	    elec.setContenido(cont?true:false);
 	    response.sendRedirect(elec.redirectMe());
 	}
